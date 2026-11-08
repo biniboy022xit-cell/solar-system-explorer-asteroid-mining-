@@ -111,3 +111,7 @@ This is an educational visualisation, not a precision ephemeris or orbital-mecha
 ## Credits
 
 Built independently by **Matibini Handiya** as a learning and portfolio project exploring interactive 3D visualisation, planetary science and the engineering challenges of future space-resource utilisation.
+
+## Link to the web App
+[https://biniboy022xit-cell.github.io/solar-system-explorer-asteroid-mining-/}]
+
