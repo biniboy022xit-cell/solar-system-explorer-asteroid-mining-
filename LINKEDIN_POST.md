@@ -22,7 +22,7 @@ This project gave me an opportunity to work with 3D scene construction, animatio
 
 I'm continuing to improve it and would appreciate constructive feedback.
 
-GitHub: [add your repository link]  
-Live demo: [add your GitHub Pages link]
+GitHub: [https://github.com/biniboy022xit-cell]  
+Live demo: [http://www.linkedin.com/in/matibini-handiya-b1289934a]
 
 #ComputerSystemsEngineering #JavaScript #ThreeJS #SpaceTechnology #Robotics #EngineeringProjects
