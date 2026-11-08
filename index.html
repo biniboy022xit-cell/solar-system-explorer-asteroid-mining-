@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An interactive solar system and hypothetical asteroid-mining explorer by Matibini Handiya." />
+  <meta name="theme-color" content="#050914" />
+  <title>Solar System Explorer | Matibini Handiya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Solar System Explorer home">
+        <span class="brand-mark">MH</span>
+        <span><strong>SOLAR SYSTEM EXPLORER</strong><small>SPACE SYSTEMS / INTERACTIVE STUDY</small></span>
+      </a>
+      <div class="top-meta"><span class="live-dot"></span> SIMULATION ONLINE <span class="divider">/</span> BUILD 01</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">INDEPENDENT ENGINEERING PROJECT · 2026</p>
+          <h1>Explore the system.<br><span>Study its resources.</span></h1>
+          <p class="hero-copy">An interactive, stylised model of our solar system with planetary information and a look at the engineering ideas behind future space-resource utilisation.</p>
+        </div>
+        <div class="hero-credit"><span>DESIGNED & BUILT BY</span><strong>Matibini Handiya</strong><span>Computer Systems Engineering</span></div>
+      </section>
+
+      <section class="simulation-layout">
+        <div class="viewport-card">
+          <div class="viewport-head">
+            <div><span class="eyebrow">01 / ORBITAL VIEW</span><h2>Solar system</h2></div>
+            <div class="view-status"><span class="live-dot"></span><span id="run-status">RUNNING</span></div>
+          </div>
+          <div id="scene-container" class="scene-container">
+            <div class="scene-hint">DRAG TO ORBIT · SCROLL TO ZOOM · SELECT A BODY</div>
+            <div class="scene-scale">DISTANCES & SIZES NOT TO SCALE</div>
+            <div id="scene-loading" class="scene-loading">INITIALISING SOLAR SYSTEM…</div>
+          </div>
+          <div class="controls">
+            <div class="control-row">
+              <div class="button-group">
+                <button id="pause-btn" class="control-button primary">Ⅱ Pause</button>
+                <button id="reset-btn" class="control-button">↺ Reset camera</button>
+              </div>
+              <div class="button-group">
+                <button id="trails-btn" class="control-button active">Trails on</button>
+                <button id="labels-btn" class="control-button active">Labels on</button>
+              </div>
+            </div>
+            <div class="range-row">
+              <label for="speed-range"><span>SIMULATION SPEED</span><output id="speed-output">1.0×</output></label>
+              <input id="speed-range" type="range" min="0" max="5" step="0.1" value="1" />
+              <div class="range-ends"><span>0× / PAUSED</span><span>5× / FAST</span></div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="info-card">
+          <div class="panel-heading"><div><span class="eyebrow">02 / BODY DATABASE</span><h2>Selected object</h2></div><span class="index-chip" id="body-index">00</span></div>
+          <div class="body-heading"><div class="body-swatch" id="body-swatch"></div><div><h3 id="body-name">The Sun</h3><span class="body-type" id="body-type">STAR</span></div></div>
+          <p class="body-description" id="body-description">The star at the centre of our solar system. Its gravity governs the motion of the planets.</p>
+          <div class="facts-grid">
+            <div class="fact"><span>DIAMETER</span><strong id="body-diameter">1,392,700 km</strong></div>
+            <div class="fact"><span>FROM SUN</span><strong id="body-distance">0 AU</strong></div>
+            <div class="fact"><span>ORBITAL PERIOD</span><strong id="body-period">N/A</strong></div>
+            <div class="fact"><span>TEMPERATURE</span><strong id="body-temperature">~5,500°C</strong></div>
+          </div>
+          <div class="resource-block">
+            <span class="eyebrow">RESOURCE NOTES</span>
+            <h4 id="body-resources">Hydrogen · Helium</h4>
+            <p id="body-mining">The Sun is not a conventional mining target. Solar energy collection could support future space-industrial systems.</p>
+          </div>
+          <div class="planet-picker">
+            <span class="eyebrow">JUMP TO BODY</span>
+            <div id="planet-buttons" class="planet-buttons"></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="resource-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">03 / SPACE RESOURCE CONCEPTS</p><h2>What could we use out there?</h2></div>
+          <p>Potential resources are not the same as proven, economically recoverable deposits. These examples are research concepts, not operational mining claims.</p>
+        </div>
+        <div class="resource-grid" id="resource-grid"></div>
+      </section>
+
+      <section class="process-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">04 / HYPOTHETICAL EXTRACTION PIPELINE</p><h2>From asteroid to useful material</h2></div>
+          <p>A simplified mission concept. Every stage has major technical, financial and safety challenges.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-card"><span>01</span><h3>Prospecting</h3><p>Use telescopes, spectroscopy and robotic reconnaissance to estimate composition, shape, rotation and accessibility.</p><small>OUTPUT / TARGET CHARACTERISATION</small></article>
+          <article class="process-card"><span>02</span><h3>Rendezvous</h3><p>Navigate to the target, match its velocity and test anchoring or contact methods in microgravity.</p><small>OUTPUT / STABLE OPERATIONS</small></article>
+          <article class="process-card"><span>03</span><h3>Extract & process</h3><p>Excavate, heat or otherwise process material. Capture volatiles and separate useful metals or minerals.</p><small>OUTPUT / REFINED FEEDSTOCK</small></article>
+          <article class="process-card"><span>04</span><h3>Use in space</h3><p>Investigate whether water, propellant, shielding or construction feedstock can support orbital infrastructure.</p><small>OUTPUT / IN-SITU RESOURCE USE</small></article>
+        </div>
+      </section>
+      <footer><div><strong>MATIBINI HANDIYA</strong><span>COMPUTER SYSTEMS ENGINEERING · INDEPENDENT PROJECT</span></div><span>EDUCATIONAL SIMULATION · NOT TO SCALE</span></footer>
+    </main>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
